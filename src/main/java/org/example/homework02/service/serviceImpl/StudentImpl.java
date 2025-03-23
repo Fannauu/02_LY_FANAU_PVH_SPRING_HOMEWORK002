@@ -1,9 +1,7 @@
 package org.example.homework02.service.serviceImpl;
 
 import org.example.homework02.model.dto.request.StudentRequest;
-import org.example.homework02.model.entity.Course;
 import org.example.homework02.model.entity.Student;
-import org.example.homework02.repository.CourseRepository;
 import org.example.homework02.repository.StudentRepository;
 import org.example.homework02.service.StudentService;
 import org.springframework.stereotype.Service;

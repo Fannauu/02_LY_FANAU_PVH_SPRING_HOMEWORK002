@@ -2,9 +2,7 @@ package org.example.homework02.repository;
 
 import org.apache.ibatis.annotations.*;
 import org.example.homework02.model.dto.request.StudentRequest;
-import org.example.homework02.model.entity.Course;
 import org.example.homework02.model.entity.Student;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -39,6 +37,7 @@ public interface StudentRepository {
     @Insert("""
         INSERT INTO student_course(student_id,course_id)
         VALUES(#{studentId},#{courseId})
+        RETURNING  *
     """)
     void addStudentIdAndCourseId(Integer studentId, Integer courseId);
 
@@ -63,9 +62,10 @@ public interface StudentRepository {
     @Select("""
         UPDATE students set student_name = #{request.name},email = #{request.email}, phone_number = #{request.phoneNumber}
         WHERE student_id = #{studentId}
+        RETURNING *
     """)
     @ResultMap("studentMapper")
-    Student putStudentById(Integer studentId , @Param("request") StudentRequest studentRequest);
+    void putStudentById(Integer studentId , @Param("request") StudentRequest studentRequest);
 
 
     @Select("""

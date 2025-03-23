@@ -3,7 +3,6 @@ package org.example.homework02.controller;
 
 import org.example.homework02.model.dto.ApiReponse.ApiResponse;
 import org.example.homework02.model.dto.request.StudentRequest;
-import org.example.homework02.model.entity.Course;
 import org.example.homework02.model.entity.Student;
 import org.example.homework02.service.StudentService;
 import org.springframework.http.HttpStatus;
@@ -54,7 +53,7 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.OK).body(
                 ApiResponse.<Student>builder()
                         .success(true)
-                        .message("Get Course By Student Id successfully")
+                        .message("Get student by id successfully")
                         .status(HttpStatus.OK)
                         .payload(studentService.getStudentById(studentId))
                         .timestamp(LocalDateTime.now())
